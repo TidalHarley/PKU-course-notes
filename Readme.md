@@ -7,7 +7,7 @@
 
 <!-- Single CTA: jump to existing index.html (GitHub Pages) -->
 <a href="https://tidalharley.github.io/PKU-course-notes/">
-  <img src="https://img.shields.io/badge/→%20ENTER-0a0a0f?style=for-the-badge&labelColor=1a1a24&color=3b82f6"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Zhi+Mang+Xing&size=36&duration=800&pause=999999&color=FFFFFF&background=1A1A24&center=true&vCenter=true&width=780&height=86&lines=→+ENTER+进入笔记主页" alt="→ ENTER 进入笔记主页"/>
 </a>
 
 <br/><br/>
