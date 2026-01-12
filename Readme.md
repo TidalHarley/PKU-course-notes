@@ -5,12 +5,6 @@
 
 <br/>
 
-<!-- 打字动画 -->
-<img src="https://readme-typing-svg.vercel.app/?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&multiline=true&width=600&height=80&lines=📚+系统整理+·+清晰准确+·+结构化呈现;🎯+助力学习+·+高效复习+·+知识沉淀" alt="Typing SVG" />
-
-<br/>
-<br/>
-
 <!-- 统计徽章 -->
 <img src="https://img.shields.io/badge/📚_课程数量-7_门-ff6b6b?style=for-the-badge&labelColor=1a1a2e" alt="Courses"/>
 &nbsp;
@@ -71,15 +65,11 @@
 <br/>
 
 <!-- 作者艺术字签名 -->
-<img src="https://capsule-render.vercel.app/api?type=soft&color=gradient&customColorList=24&height=80&section=footer&text=Made%20with%20❤️%20by%20@TidalHarley&fontSize=20&fontColor=fff&animation=fadeIn"/>
-
-<br/>
-
-<!-- 作者链接 -->
 <a href="https://github.com/TidalHarley">
-  <img src="https://img.shields.io/badge/GitHub-TidalHarley-181717?style=flat-square&logo=github" alt="GitHub"/>
+  <img src="https://capsule-render.vercel.app/api?type=transparent&color=gradient&height=100&text=@TidalHarley&fontSize=40&fontColor=6366f1&animation=fadeIn&fontAlign=50&fontAlignY=50&stroke=a855f7&strokeWidth=2"/>
 </a>
 
+<br/>
 <br/>
 <br/>
 
