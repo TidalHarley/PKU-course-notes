@@ -40,8 +40,8 @@
 <br/>
 
 <!-- 作者艺术字签名 -->
-<a href="https://github.com/TidalHarley">
-  <img src="https://capsule-render.vercel.app/api?type=venom&color=gradient&customColorList=6,11,20&height=150&text=@TidalHarley&fontSize=50&fontColor=fff&animation=twinkling&fontAlign=50&fontAlignY=55&stroke=6366f1&strokeWidth=1"/>
+<a href="https://tidalharley.github.io/PKU-course-notes/">
+  <img src="https://capsule-render.vercel.app/api?type=soft&color=gradient&customColorList=0,2,8,10,12&height=120&text=@TidalHarley&fontSize=45&fontColor=6366f1&animation=blinking&fontAlign=50&fontAlignY=50&stroke=8b5cf6&strokeWidth=2&textShadow=true"/>
 </a>
 
 <br/>
