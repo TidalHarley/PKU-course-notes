@@ -16,7 +16,7 @@
 
 <br/>
 
-<a href="./index.html">
+<a href="https://tidalharley.github.io/PKU-course-notes/index.html">
   <img src="https://img.shields.io/badge/🚀_进入笔记导航-点击这里开始浏览-ec4899?style=for-the-badge&logoColor=white" alt="Enter" width="400"/>
 </a>
 
