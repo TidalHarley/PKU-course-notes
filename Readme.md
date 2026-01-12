@@ -1,47 +1,127 @@
-<div align="center" style="background:radial-gradient(circle at 30% 20%,rgba(59,130,246,0.08),transparent 40%),radial-gradient(circle at 70% 80%,rgba(139,92,246,0.08),transparent 40%),linear-gradient(180deg,#0a0a0f 0%,#12121a 60%,#0a0a0f 100%);padding:32px 18px;border:1px solid rgba(255,255,255,0.06);border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,0.4);color:#fff;font-family:'Inter','Noto Sans SC',sans-serif;">
+<div align="center">
 
-  <div style="font-size:46px;font-weight:700;letter-spacing:1px;background:linear-gradient(135deg,#fff 0%,#a0a0b0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;">
-    Course Notes
-  </div>
-  <div style="color:#a0a0b0;font-size:16px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:22px;">
-    PKU Course Notes Portal
-  </div>
+# 📚 PKU Course Notes
 
-  <!-- badges -->
-  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px;">
-    <span style="background:#1a1a24;border:1px solid rgba(255,255,255,0.08);border-radius:999px;padding:6px 12px;font-size:13px;color:#10b981;">● 持续更新</span>
-    <span style="background:#1a1a24;border:1px solid rgba(255,255,255,0.08);border-radius:999px;padding:6px 12px;font-size:13px;color:#8b5cf6;">Dark Theme</span>
-    <span style="background:#1a1a24;border:1px solid rgba(255,255,255,0.08);border-radius:999px;padding:6px 12px;font-size:13px;color:#3b82f6;">PDF / md</span>
-  </div>
+<img src="https://img.shields.io/badge/PKU-北京大学-c41230?style=for-the-badge&logo=academia&logoColor=white" alt="PKU"/>
+<img src="https://img.shields.io/badge/Notes-课程笔记-3b82f6?style=for-the-badge&logo=bookstack&logoColor=white" alt="Notes"/>
+<img src="https://img.shields.io/badge/Open_Source-开源分享-10b981?style=for-the-badge&logo=github&logoColor=white" alt="Open Source"/>
 
-  <!-- stats -->
-  <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;">
-    <div style="background:#12121a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:12px 16px;min-width:140px;">
-      <div style="font-size:22px;font-weight:700;">7</div>
-      <div style="color:#a0a0b0;font-size:12px;margin-top:4px;">课程数量</div>
-    </div>
-    <div style="background:#12121a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:12px 16px;min-width:140px;">
-      <div style="font-size:22px;font-weight:700;">2025-26</div>
-      <div style="color:#a0a0b0;font-size:12px;margin-top:4px;">学年覆盖</div>
-    </div>
-    <div style="background:#12121a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:12px 16px;min-width:140px;">
-      <div style="font-size:22px;font-weight:700;">PDF / md</div>
-      <div style="color:#a0a0b0;font-size:12px;margin-top:4px;">格式支持</div>
-    </div>
-  </div>
+<br/>
+<br/>
 
-  <!-- CTA -->
-  <a href="https://tidalharley.github.io/PKU-course-notes/" style="text-decoration:none;">
-    <div style="display:inline-block;background:linear-gradient(135deg,#1a1a24,#12121a);border:1px solid #3b82f6;color:#fff;padding:16px 36px;border-radius:999px;font-size:18px;font-weight:700;letter-spacing:0.08em;box-shadow:0 12px 30px rgba(59,130,246,0.25);">
-      → ENTER · 进入笔记主页
-    </div>
-  </a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&repeat=false&width=500&lines=%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E5%BC%80%E6%BA%90%E5%90%88%E9%9B%86">
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=1e293b&center=true&vCenter=true&repeat=false&width=500&lines=%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E5%BC%80%E6%BA%90%E5%90%88%E9%9B%86">
+  <img alt="Typing SVG" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&repeat=false&width=500&lines=%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E5%BC%80%E6%BA%90%E5%90%88%E9%9B%86">
+</picture>
 
-  <div style="height:1px;width:70%;max-width:640px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:26px auto 18px;"></div>
+<br/>
 
-  <!-- signature -->
-  <div style="color:#8b5cf6;font-size:18px;font-weight:600;margin-bottom:8px;">@TidalHarley</div>
-  <a href="https://github.com/TidalHarley" style="color:#a0a0b0;text-decoration:none;font-size:13px;">GitHub</a>
+> **系统整理 · 清晰准确 · 结构化呈现**
+> 
+> *记录学习，分享知识，共同成长*
 
-  <div style="color:#a0a0b0;font-size:12px;margin-top:14px;">Visitors · 如果图片未显示，请检查网络或刷新</div>
+<br/>
+
+---
+
+<br/>
+
+## ✨ 点击进入在线笔记导航
+
+<br/>
+
+<a href="./index.html">
+  <img src="https://img.shields.io/badge/🚀_进入笔记导航-点击这里开始浏览-ec4899?style=for-the-badge&logoColor=white" alt="Enter" width="400"/>
+</a>
+
+<br/>
+<br/>
+
+**👆 点击上方按钮，开启你的学习之旅！**
+
+<br/>
+
+---
+
+<br/>
+
+## 📊 项目概览
+
+<br/>
+
+| 📖 课程数量 | 📅 学年覆盖 | 📄 格式支持 |
+|:-----------:|:-----------:|:-----------:|
+| **7** | **2025-26** | **PDF / Markdown** |
+
+<br/>
+
+## 🌟 特性
+
+<br/>
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <br/>
+      <img width="60" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Books"/>
+      <br/><br/>
+      <b>系统整理</b>
+      <br/>
+      <sub>知识点结构化梳理</sub>
+      <br/><br/>
+    </td>
+    <td align="center" width="33%">
+      <br/>
+      <img width="60" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bullseye.png" alt="Bullseye"/>
+      <br/><br/>
+      <b>清晰准确</b>
+      <br/>
+      <sub>内容精炼易于理解</sub>
+      <br/><br/>
+    </td>
+    <td align="center" width="33%">
+      <br/>
+      <img width="60" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket"/>
+      <br/><br/>
+      <b>持续更新</b>
+      <br/>
+      <sub>跟随课程进度同步</sub>
+      <br/><br/>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+---
+
+<br/>
+
+## 💖 支持项目
+
+<br/>
+
+如果这些笔记对你有帮助，欢迎给个 ⭐ Star 支持！
+
+<br/>
+
+[![Star History Chart](https://api.star-history.com/svg?repos=TidalHarley/PKU-course-notes&type=Date)](https://star-history.com/#TidalHarley/PKU-course-notes&Date)
+
+<br/>
+
+---
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=100&section=footer" width="100%"/>
+
+<br/>
+
+**Made with ❤️ by [@TidalHarley](https://github.com/TidalHarley)**
+
+<br/>
+
+<sub>© 2024-2026 TidalHarley · CC BY-NC-SA 4.0</sub>
+
 </div>
