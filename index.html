@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKU Course Notes | 北京大学课程笔记</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 暗色主题 (默认) */
+        :root, [data-theme="dark"] {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-orange: #f59e0b;
+            --accent-green: #10b981;
+            --accent-cyan: #06b6d4;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            --grid-color: rgba(255, 255, 255, 0.02);
+            --toggle-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 亮色主题 */
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --grid-color: rgba(0, 0, 0, 0.03);
+            --toggle-bg: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* 主题切换按钮 */
+        .theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--toggle-bg);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle svg {
+            width: 22px;
+            height: 22px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+            stroke: var(--text-primary);
+        }
+
+        .theme-toggle .moon-icon {
+            display: block;
+            stroke: var(--text-primary);
+        }
+
+        [data-theme="light"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        [data-theme="light"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        /* 背景动画 */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .bg-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+            animation: bgMove 20s ease-in-out infinite;
+        }
+
+        [data-theme="light"] .bg-gradient::before {
+            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.04) 0%, transparent 50%);
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(2%, 2%) rotate(1deg); }
+            50% { transform: translate(-1%, 3%) rotate(-1deg); }
+            75% { transform: translate(1%, -2%) rotate(0.5deg); }
+        }
+
+        /* 网格背景 */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transition: background-image 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--toggle-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .logo-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* 艺术签名区域 */
+        .signature-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .signature-wrapper {
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .signature-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .signature-text {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease infinite;
+            filter: drop-shadow(0 4px 15px rgba(102, 126, 234, 0.3));
+            letter-spacing: 2px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .signature-subtitle {
+            margin-top: 12px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .signature-subtitle svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px 0 100px;
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-color), transparent);
+        }
+
+        /* Course Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        /* Course Card */
+        .course-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-color);
+            box-shadow: var(--card-shadow), 0 0 60px var(--card-glow);
+        }
+
+        .course-card:hover::before {
+            opacity: 1;
+        }
+
+        .course-card.finance {
+            --card-accent: linear-gradient(90deg, #f59e0b, #fbbf24);
+            --card-glow: rgba(245, 158, 11, 0.1);
+        }
+
+        .course-card.web {
+            --card-accent: linear-gradient(90deg, #3b82f6, #60a5fa);
+            --card-glow: rgba(59, 130, 246, 0.1);
+        }
+
+        .course-card.astronomy {
+            --card-accent: linear-gradient(90deg, #8b5cf6, #a78bfa);
+            --card-glow: rgba(139, 92, 246, 0.1);
+        }
+
+        .course-card.ml {
+            --card-accent: linear-gradient(90deg, #10b981, #34d399);
+            --card-glow: rgba(16, 185, 129, 0.1);
+        }
+
+        .course-card.ai {
+            --card-accent: linear-gradient(90deg, #ec4899, #f472b6);
+            --card-glow: rgba(236, 72, 153, 0.1);
+        }
+
+        .course-card.network {
+            --card-accent: linear-gradient(90deg, #06b6d4, #22d3ee);
+            --card-glow: rgba(6, 182, 212, 0.1);
+        }
+
+        .course-card.multimodal {
+            --card-accent: linear-gradient(90deg, #f43f5e, #fb7185);
+            --card-glow: rgba(244, 63, 94, 0.1);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            background: var(--toggle-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .course-card.finance .card-icon {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.05));
+        }
+
+        .course-card.web .card-icon {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(96, 165, 250, 0.05));
+        }
+
+        .course-card.astronomy .card-icon {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(167, 139, 250, 0.05));
+        }
+
+        .course-card.ml .card-icon {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(52, 211, 153, 0.05));
+        }
+
+        .course-card.ai .card-icon {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(244, 114, 182, 0.05));
+        }
+
+        .course-card.network .card-icon {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(34, 211, 238, 0.05));
+        }
+
+        .course-card.multimodal .card-icon {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(251, 113, 133, 0.05));
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .card-desc {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            background: var(--toggle-bg);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .semester {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .arrow-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--toggle-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover .arrow-icon {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        .arrow-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover .arrow-icon svg {
+            stroke: var(--bg-primary);
+            transform: translateX(2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .footer-desc {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* 访问计数器 */
+        .visitor-counter {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .visitor-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .visitor-badge {
+            display: inline-block;
+        }
+
+        .copyright {
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0 30px;
+            }
+
+            .header-stats {
+                gap: 24px;
+            }
+
+            .theme-toggle {
+                top: 16px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-card {
+                padding: 24px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .signature-text {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection */
+        ::selection {
+            background: rgba(59, 130, 246, 0.3);
+            color: var(--text-primary);
+        }
+
+        /* 入场动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.15s; }
+        .course-card:nth-child(3) { animation-delay: 0.2s; }
+        .course-card:nth-child(4) { animation-delay: 0.25s; }
+        .course-card:nth-child(5) { animation-delay: 0.3s; }
+        .course-card:nth-child(6) { animation-delay: 0.35s; }
+        .course-card:nth-child(7) { animation-delay: 0.4s; }
+
+        .signature-section {
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.05s;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="grid-bg"></div>
+
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        </svg>
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <header>
+            <div class="logo-badge">
+                <span class="dot"></span>
+                <span>持续更新中</span>
+            </div>
+            <h1>PKU Course Notes</h1>
+            <p class="subtitle">
+                北京大学课程笔记开源合集<br>
+                系统整理 · 清晰准确 · 结构化呈现
+            </p>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">课程数量</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2025-26</div>
+                    <div class="stat-label">学年覆盖</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">PDF/md</div>
+                    <div class="stat-label">格式支持</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 艺术签名区域 -->
+        <section class="signature-section">
+            <a href="https://github.com/TidalHarley" target="_blank" class="signature-wrapper">
+                <div class="signature-text">@TidalHarley</div>
+                <div class="signature-subtitle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </div>
+            </a>
+        </section>
+
+        <main>
+            <div class="section-title">课程列表 / Course Collection</div>
+            
+            <div class="course-grid">
+                <!-- 计算机网络 -->
+                <a href="https://github.com/TidalHarley/PKU-Computer-Networks-notes" target="_blank" class="course-card network">
+                    <div class="card-icon">🌐</div>
+                    <h2 class="card-title">计算机网络</h2>
+                    <p class="card-subtitle">Computer Networks</p>
+                    <p class="card-desc">
+                        涵盖计算机网络架构、TCP/IP协议栈、路由算法、网络安全等核心内容。
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">应用层、传输层</span>
+                        <span class="tag">TCP/IP</span>
+                        <span class="tag">数据链路层</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2026 Fall</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 机器学习概论 -->
+                <a href="https://github.com/TidalHarley/PKU-Intro2ML-notes" target="_blank" class="course-card ml">
+                    <div class="card-icon">🤖</div>
+                    <h2 class="card-title">机器学习概论</h2>
+                    <p class="card-subtitle">Introduction to Machine Learning</p>
+                    <p class="card-desc">
+                        系统学习机器学习基础理论，包括朴素贝叶斯、决策树、SVM、神经网络等核心算法。
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">朴素贝叶斯</span>
+                        <span class="tag">决策树</span>
+                        <span class="tag">SVM</span>
+                        <span class="tag">神经网络</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2026 Fall</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 生成模型基础 -->
+                <a href="https://github.com/TidalHarley/PKU-Genai-notes" target="_blank" class="course-card ai">
+                    <div class="card-icon">✨</div>
+                    <h2 class="card-title">生成模型基础</h2>
+                    <p class="card-subtitle">Basic of Generative Model</p>
+                    <p class="card-desc">
+                        探索生成式AI核心技术，涵盖VAE、GAN、Diffusion、Transformer等前沿模型。
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">生成模型</span>
+                        <span class="tag">Diffusion</span>
+                        <span class="tag">Transformer</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2026 Spring</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 多模态学习 -->
+                <a href="https://github.com/TidalHarley/PKU-Multimodal-Learning-notes" target="_blank" class="course-card multimodal">
+                    <div class="card-icon">🎭</div>
+                    <h2 class="card-title">多模态学习</h2>
+                    <p class="card-subtitle">Multimodal Learning</p>
+                    <p class="card-desc">
+                        涵盖基础的多模态知识, 类似Stanford CS231N
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">视觉语言</span>
+                        <span class="tag">跨模态</span>
+                        <span class="tag">MLLM</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2026 Fall</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- JavaScript与Web程序设计 -->
+                <a href="https://github.com/TidalHarley/PKU-JavaScript-Web-notes" target="_blank" class="course-card web">
+                    <div class="card-icon">💻</div>
+                    <h2 class="card-title">JavaScript 与 Web 程序设计</h2>
+                    <p class="card-subtitle">JavaScript & Web Development</p>
+                    <p class="card-desc">
+                        深入JavaScript基础语法和特性, 包括 DOM 操作、异步编程、现代 ES6+ 语法及实战项目开发。
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">JS语法</span>
+                        <span class="tag">JS特性</span>
+                        <span class="tag">异步编程</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2025 Spring</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 金融学概论 -->
+                <a href="https://github.com/TidalHarley/PKU-Intro2Finance-notes" target="_blank" class="course-card finance">
+                    <div class="card-icon">💰</div>
+                    <h2 class="card-title">金融学概论</h2>
+                    <p class="card-subtitle">Introduction to Finance</p>
+                    <p class="card-desc">
+                        涵盖金融市场基础、资产定价理论、公司金融决策等内容。
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">股票、基金</span>
+                        <span class="tag">资产定价</span>
+                        <span class="tag">国际金融</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2025 Spring</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 太阳系中的科学 -->
+                <a href="https://github.com/TidalHarley/PKU-Solar-System-notes" target="_blank" class="course-card astronomy">
+                    <div class="card-icon">🪐</div>
+                    <h2 class="card-title">太阳系中的科学</h2>
+                    <p class="card-subtitle">Science of the Solar System</p>
+                    <p class="card-desc">
+                        探索行星科学与天体物理，了解太阳系结构、行星特征及前沿探测任务。
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">行星科学</span>
+                        <span class="tag">天体物理</span>
+                        <span class="tag">太阳系探测</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2025 Spring</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">📖 PKU Course Notes</div>
+                <p class="footer-desc">
+                    记录学习，分享知识，共同成长。<br>
+                    如果这些笔记对你有帮助，欢迎 Star 支持！
+                </p>
+                <div class="footer-links">
+                    <a href="https://github.com/TidalHarley/PKU-course-notes" target="_blank" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://github.com/TidalHarley" target="_blank" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                        @TidalHarley
+                    </a>
+                </div>
+
+                <!-- 访问计数器 -->
+                <div class="visitor-counter">
+                    <div class="visitor-label">页面访问量</div>
+                    <div class="visitor-badge">
+                        <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FTidalHarley%2FPKU-course-notes&label=Visitors&labelColor=%231a1a24&countColor=%233b82f6" alt="Visitor Count" />
+                    </div>
+                </div>
+
+                <p class="copyright">© 2024-2026 TidalHarley · CC BY-NC-SA 4.0</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换功能
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // 初始化主题
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+
+        // 页面加载时初始化
+        initTheme();
+
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+            }
+        });
+    </script>
+</body>
+</html>
