@@ -7,7 +7,7 @@
 
 <!-- 核心：暗色沉浸式跳转卡片 - 视觉重心 -->
 <a href="https://tidalharley.github.io/PKU-course-notes/index.html">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0d1117&height=120&text=🚀%20进入在线笔记导航%20%7C%20Start%20Reading&fontSize=28&fontColor=e0e0e0&fontAlignY=42&desc=点击此处跳转至完整的课程笔记文档&descFontSize=14&descAlignY=72&descAlign=50&stroke=3b82f6&strokeWidth=2&animation=fadeIn" width="90%" alt="Enter Navigation"/>
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0d1117&height=120&text=🚀%20进入在线笔记导航%20%7C%20Start%20Reading&fontSize=28&fontColor=f5f5f5&fontAlignY=42&desc=点击此处跳转至完整的课程笔记文档&descFontSize=14&descAlignY=72&descAlign=50&stroke=3b82f6&strokeWidth=2&animation=fadeIn" width="90%" alt="Enter Navigation"/>
 </a>
 
 <br/>
@@ -21,7 +21,11 @@
 <br/>
 
 <a href="https://star-history.com/#TidalHarley/PKU-course-notes&Date">
-  <img src="https://api.star-history.com/svg?repos=TidalHarley/PKU-course-notes&type=Date" alt="Star History Chart" width="100%"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=TidalHarley/PKU-course-notes&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=TidalHarley/PKU-course-notes&type=Date&theme=default" />
+    <img src="https://api.star-history.com/svg?repos=TidalHarley/PKU-course-notes&type=Date" alt="Star History Chart" width="100%"/>
+  </picture>
 </a>
 
 <br/>
