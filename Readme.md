@@ -7,7 +7,7 @@
 
 <!-- Single CTA: jump to existing index.html (GitHub Pages) -->
 <a href="https://tidalharley.github.io/PKU-course-notes/">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Zhi+Mang+Xing&size=36&duration=800&pause=999999&color=FFFFFF&background=1A1A24&center=true&vCenter=true&width=780&height=86&lines=→+ENTER+进入笔记主页" alt="→ ENTER 进入笔记主页"/>
+  <img width="560" src="https://capsule-render.vercel.app/api?type=rounded&color=0:12121a,100:1a1a24&height=86&section=header&text=→%20ENTER%20进入笔记主页&fontSize=28&fontColor=ffffff&animation=fadeIn"/>
 </a>
 
 <br/><br/>
