@@ -15,13 +15,13 @@
 <br/>
 <br/>
 
-<!-- 访问按钮 -->
+<!-- 快速访问按钮组 -->
 <a href="https://tidalharley.github.io/PKU-course-notes/">
-  <img src="https://img.shields.io/badge/🚀_访问课程主页-立即进入-3b82f6?style=for-the-badge&logoColor=white" alt="Visit Website"/>
+  <img src="https://img.shields.io/badge/🚀_访问课程主页-立即进入-3b82f6?style=for-the-badge&logoColor=white&labelColor=1a1a2e" alt="Visit Website"/>
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/TidalHarley/PKU-course-notes">
-  <img src="https://img.shields.io/badge/⭐_Star_This_Repo-支持一下-f59e0b?style=for-the-badge&logoColor=white" alt="Star"/>
+  <img src="https://img.shields.io/badge/⭐_GitHub_仓库-支持一下-f59e0b?style=for-the-badge&logoColor=white&labelColor=1a1a2e" alt="Star"/>
 </a>
 
 <br/>
@@ -31,19 +31,19 @@
 
 <br/>
 
-<!-- 作者主页按钮 -->
-<a href="https://github.com/TidalHarley">
-  <img src="https://img.shields.io/badge/👤_作者主页-@TidalHarley-6366f1?style=for-the-badge&logo=github&logoColor=white&labelColor=1a1a2e" alt="Author"/>
-</a>
-
-<br/>
-<br/>
-
-<!-- 作者艺术字签名 -->
+<!-- 作者信息 -->
 <a href="https://tidalharley.github.io/PKU-course-notes/">
-  <img src="https://capsule-render.vercel.app/api?type=soft&color=gradient&customColorList=0,2,8,10,12&height=120&text=@TidalHarley&fontSize=45&fontColor=6366f1&animation=blinking&fontAlign=50&fontAlignY=50&stroke=8b5cf6&strokeWidth=2&textShadow=true"/>
+  <img src="https://capsule-render.vercel.app/api?type=soft&color=gradient&customColorList=6,11,20&height=130&text=@TidalHarley&fontSize=48&fontColor=6366f1&animation=blinking&fontAlign=50&fontAlignY=50&stroke=8b5cf6&strokeWidth=2&textShadow=true&desc=点击访问课程主页&descSize=14&descAlignY=75"/>
 </a>
 
+<br/>
+
+<!-- GitHub 链接按钮 -->
+<a href="https://github.com/TidalHarley">
+  <img src="https://img.shields.io/badge/GitHub-TidalHarley-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/>
+</a>
+
+<br/>
 <br/>
 
 <!-- 底部波浪 -->
