@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&width=500&lines=📖+PKU+Course+Notes;北京大学课程笔记合集" alt="Typing SVG" />
+<img src="https://readme-typing-svg.vercel.app/?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&width=500&lines=📖+PKU+Course+Notes;北京大学课程笔记合集" alt="Typing SVG" />
 
 <br/>
 <br/>
@@ -25,5 +25,3 @@
 <sub>Made with ❤️ by [@TidalHarley](https://github.com/TidalHarley)</sub>
 
 </div>
-
-
