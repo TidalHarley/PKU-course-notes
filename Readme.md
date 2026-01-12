@@ -7,18 +7,6 @@
 <img src="https://img.shields.io/badge/Open_Source-开源分享-10b981?style=for-the-badge&logo=github&logoColor=white" alt="Open Source"/>
 
 <br/>
-<br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&repeat=false&width=500&lines=%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E5%BC%80%E6%BA%90%E5%90%88%E9%9B%86">
-  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=1e293b&center=true&vCenter=true&repeat=false&width=500&lines=%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E5%BC%80%E6%BA%90%E5%90%88%E9%9B%86">
-  <img alt="Typing SVG" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&repeat=false&width=500&lines=%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E5%BC%80%E6%BA%90%E5%90%88%E9%9B%86">
-</picture>
-
-<br/>
-
-
-<br/>
 
 ---
 
@@ -61,7 +49,7 @@
     </td>
     <td align="center" width="33%">
       <br/>
-      <img width="60" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bullseye.png" alt="Bullseye"/>
+      <img width="60" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Magnifying%20Glass%20Tilted%20Left.png" alt="Magnifying Glass"/>
       <br/><br/>
       <b>清晰准确</b>
       <br/>
