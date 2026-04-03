@@ -394,6 +394,11 @@
             --card-glow: rgba(244, 63, 94, 0.1);
         }
 
+        .course-card.math {
+            --card-accent: linear-gradient(90deg, #6366f1, #818cf8);
+            --card-glow: rgba(99, 102, 241, 0.12);
+        }
+
         .card-icon {
             width: 56px;
             height: 56px;
@@ -434,6 +439,10 @@
 
         .course-card.multimodal .card-icon {
             background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(251, 113, 133, 0.05));
+        }
+
+        .course-card.math .card-icon {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(129, 140, 248, 0.05));
         }
 
         .card-title {
@@ -663,6 +672,7 @@
         .course-card:nth-child(5) { animation-delay: 0.3s; }
         .course-card:nth-child(6) { animation-delay: 0.35s; }
         .course-card:nth-child(7) { animation-delay: 0.4s; }
+        .course-card:nth-child(8) { animation-delay: 0.45s; }
 
         .signature-section {
             animation: fadeInUp 0.6s ease forwards;
@@ -698,7 +708,7 @@
             </p>
             <div class="header-stats">
                 <div class="stat-item">
-                    <div class="stat-value">7</div>
+                    <div class="stat-value">8</div>
                     <div class="stat-label">课程数量</div>
                 </div>
                 <div class="stat-item">
@@ -880,6 +890,29 @@
                         <span class="tag">行星科学</span>
                         <span class="tag">天体物理</span>
                         <span class="tag">太阳系探测</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="semester">📅 2025 Spring</span>
+                        <div class="arrow-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 高等数学A2 -->
+                <a href="https://github.com/TidalHarley/PKU-Advanced-Mathematics-A-notes" target="_blank" class="course-card math">
+                    <div class="card-icon">📐</div>
+                    <h2 class="card-title">高等数学 A2</h2>
+                    <p class="card-subtitle">Advanced Mathematics A2</p>
+                    <p class="card-desc">
+                        整理课程笔记、习题课讲义与课后作业答案，适合预习、复习和系统梳理高数核心内容。
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">高等数学</span>
+                        <span class="tag">习题课</span>
+                        <span class="tag">作业答案</span>
                     </div>
                     <div class="card-footer">
                         <span class="semester">📅 2025 Spring</span>
